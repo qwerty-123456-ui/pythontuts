@@ -15,3 +15,5 @@ print(os.listdir())
 print(os.listdir(r'E:'))
 for item in os.listdir():
     print(os.path.join(os.getcwd(),item))
+
+

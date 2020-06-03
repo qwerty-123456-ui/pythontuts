@@ -198,6 +198,22 @@ class Phone:
     @price.setter
     def price(self,new_price):
         self._price=max(new_price,0)
+
+    def __repr__(self):
+        return f"Phone('{self.brand}',{self.model_name}',{self.price})"
+    
+    def __str__(self):
+        return f'{self.brand}'
+
+    def __len__(self):
+        return len(self.brand)
+
+    def __add__(self,other):
+        return self.price+other.price 
+    
+       
+    
+
 # _name #convention of private name
 # __name__#dunder/magic methods
 
@@ -226,28 +242,90 @@ p1=Phone("n","0",-90)
 # p1.price=90
 # print(p1.price)
 
-class Smartphone(Phone):
-    def __init__(self,brand,model_name,price,ram,internal_mem,rear_camera):
-        # two
-        # Phone.__init__(self,brand,model_name,price)
-        super().__init__(brand,model_name,price)
-        self.ram=ram
-        self.internal_mem=internal_mem
-        self.rear_camera=rear_camera
-        # if price>0:
-        #     self._price=price
-        #     self.__price=price
-        # else:
-        #     self._price=0'
-        # self.complete_specifications=f"{self.brand} {self.model_name} and price {self._price}"
-    #
-    # def make_a_call(self,phone_number):
-    #     print(f"calling {phone_number}....")
-    #
-    # def full_name(self):
-    #     return f"{self.brand}  {self.model_name}"
+# class Smartphone(Phone):
+#     def __init__(self,brand,model_name,price,ram,internal_mem,rear_camera):
+#         # two ways
+#         # Phone.__init__(self,brand,model_name,price)
+#         super().__init__(brand,model_name,price)
+#         self.ram=ram
+#         self.internal_mem=internal_mem
+#         self.rear_camera=rear_camera
+#         # if price>0:
+#         #     self._price=price
+#         #     self.__price=price
+#         # else:
+#         #     self._price=0'
+#         # self.complete_specifications=f"{self.brand} {self.model_name} and price {self._price}"
+#     #
+#     # def make_a_call(self,phone_number):
+#     #     print(f"calling {phone_number}....")
 
-phone=Phone('nokia','1111',1111)
-sp=Smartphone('apple','iphone 11',20000,'2','32','20')
-print(phone.full_name())
-print(sp.full_name())
+#     # def full_name(self):
+#     #     return f"{self.brand}  {self.model_name}"
+
+# phone=Phone('nokia','1111',1111)
+# sp=Smartphone('apple','iphone 11',20000,'2','32','20')
+# print(phone.full_name())
+# print(sp.full_name())
+# # Multilevel inheritance
+# class FlagSmartPhone(Smartphone):
+#     def __init__(self,brand,model_name,price,ram,internal_mem,rear_camera,front_camera):
+#         super().__init__(brand,model_name,price,ram,internal_mem,rear_camera)
+#         self.front_camera=front_camera
+    
+#     def full_name(self):
+#         return f"{self.brand}  {self.model_name}   and {self.price}"
+
+# flagp=FlagSmartPhone('apple','iphone 11',20000,'2','32','20','16')
+# print(flagp.full_name())
+# # print(help(flagp))
+# print(isinstance(flagp,FlagSmartPhone))
+# print(isinstance(flagp,Smartphone))
+# print(issubclass(Smartphone,Phone))
+# print(issubclass(Smartphone,FlagSmartPhone))
+
+
+# # multiple inheritance
+# class A:
+#     def class_A(self):
+#         return "class a"
+    
+#     def hello(self):
+#         return "hello from a"
+    
+# class B:
+#     def class_B(self):
+#         return "class b"
+    
+#     def hello(self):
+#         return "hello from b"
+
+# class C(A,B):
+#     pass
+
+# class D(B,A):
+#     pass
+
+# c=C()
+# print(c.class_B())
+# print(c.class_A())
+# print(c.hello())
+# # print(help(c))
+# print(C.mro())
+# print(C.__mro__)
+
+# d=D()
+# print(d.class_B())
+# print(d.class_A())
+# print(d.hello())
+# print(help(d))
+
+# dunder methods / magic methods
+my=Phone('apple','iphone',1000)
+my2=Phone('apple','iphone 11',1200)
+print(my+my2)
+# print(my)
+# print(repr(my))
+# print(str(my))
+# print(my.__repr__())
+# print(len(my))
